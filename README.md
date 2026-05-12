@@ -1,8 +1,8 @@
 # UGM Thesis LaTeX Template
 
-> **Template LaTeX resmi untuk Tugas Akhir Universitas Gadjah Mada (UGM)**
+> **Template LaTeX resmi untuk Tugas Akhir Fakultas FMIPA Universitas Gadjah Mada (UGM)**
 
-Template ini menyediakan struktur LaTeX lengkap untuk penulisan **Proposal Tugas Akhir** dan **Skripsi** sesuai dengan pedoman resmi UGM.
+Template ini menyediakan struktur LaTeX lengkap untuk penulisan **Proposal Tugas Akhir** dan **Skripsi** sesuai dengan pedoman resmi FMIPA UGM.
 
 ---
 
