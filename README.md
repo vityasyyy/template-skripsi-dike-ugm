@@ -1,6 +1,6 @@
 # UGM Thesis LaTeX Template
 
-> **Template LaTeX resmi untuk Tugas Akhir Departemen IKE Fakultas FMIPA Universitas Gadjah Mada (UGM)**
+> **Template LaTeX resmi untuk Tugas Akhir Departemen IKE Fakultas MIPA Universitas Gadjah Mada (UGM)**
 
 Template ini menyediakan struktur LaTeX lengkap untuk penulisan **Proposal Tugas Akhir** dan **Skripsi** sesuai dengan pedoman resmi DIKE FMIPA UGM.
 
