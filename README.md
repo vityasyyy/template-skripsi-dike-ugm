@@ -1,6 +1,6 @@
 # UGM Thesis LaTeX Template
 
-> **Template LaTeX resmi untuk Tugas Akhir Departemen IKE Fakultas FMIPA Universitas Gadjah Mada (UGM)**
+> **Template LaTeX resmi untuk Tugas Akhir Departemen IKE Fakultas MIPA Universitas Gadjah Mada (UGM)**
 
 Template ini menyediakan struktur LaTeX lengkap untuk penulisan **Proposal Tugas Akhir** dan **Skripsi** sesuai dengan pedoman resmi DIKE FMIPA UGM.
 
@@ -15,8 +15,8 @@ Klik tombol **Fork** di pojok kanan atas untuk menyalin repository ke akun GitHu
 ### 2. Clone ke Lokal
 
 ```bash
-git clone https://github.com/YOUR_USERNAME/ugm-thesis-latex.git
-cd ugm-thesis-latex
+git clone https://github.com/vityasyyy/template-skripsi-dike-ugm.git
+cd template-skripsi-dike-ugm
 ```
 
 ### 3. Ganti Metadata
@@ -151,7 +151,7 @@ Gunakan tag untuk mengambil versi sesuai tahun akademik:
 
 ```bash
 # Clone versi spesifik
-git clone --branch v2026.1 https://github.com/vityasyyy/ugm-thesis-latex.git
+git clone --branch v2026.1 https://github.com/vityasyyy/template-skripsi-dike-ugm.git
 
 # Atau checkout setelah clone
 git checkout v2026.1
