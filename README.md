@@ -1,148 +1,207 @@
-# LaTeX Thesis Repository — UGM
+# UGM Thesis LaTeX Template
 
-> **Institution:** Universitas Gadjah Mada (UGM)  
-> **Author:** Argya Vityasy — 23/522547/PA/22475  
-> **Program:** Informatika, Departemen Teknik Elektro dan Informatika, FMIPA UGM
+> **Template LaTeX resmi untuk Tugas Akhir Universitas Gadjah Mada (UGM)**
 
-This repository contains LaTeX source code for both the **thesis proposal** and the **full thesis (skripsi)** using the official UGM thesis class (`ugmskripsi.cls`).
+Template ini menyediakan struktur LaTeX lengkap untuk penulisan **Proposal Tugas Akhir** dan **Skripsi** sesuai dengan pedoman resmi UGM.
+
+---
+
+## Quick Start
+
+### 1. Fork Repository Ini
+
+Klik tombol **Fork** di pojok kanan atas untuk menyalin repository ke akun GitHub Anda.
+
+### 2. Clone ke Lokal
+
+```bash
+git clone https://github.com/YOUR_USERNAME/ugm-thesis-latex.git
+cd ugm-thesis-latex
+```
+
+### 3. Ganti Metadata
+
+Edit file `template/proposal/main.tex` dan `template/skripsi/main.tex`, ganti semua placeholder:
+
+```latex
+\titleind{Judul Penelitian Anda dalam Bahasa Indonesia}
+\titleeng{Your Research Title in English}
+\fullname{Nama Lengkap Anda}
+\idnum{XX/XXXXXX/PA/XXXXX}
+\program{Informatika}
+\dept{Teknik Elektro dan Informatika}
+\firstsupervisor{Nama Dosen Pembimbing, S.T., M.T.}
+```
+
+### 4. Tulis Konten
+
+Edit file-file di `template/*/chapters/` dan ganti konten lorem ipsum dengan tulisan Anda.
+
+### 5. Compile
+
+```bash
+# Opsi 1: Makefile (membutuhkan texlive terinstall)
+make proposal
+make skripsi
+
+# Opsi 2: Docker (tidak perlu texlive)
+make proposal-docker
+make skripsi-docker
+```
+
+---
+
+## Features
+
+- **Struktur lengkap** sesuai pedoman UGM (Proposal + Skripsi)
+- **Class file resmi** UGM (`ugmskripsi.cls`) dengan dukungan `[proposal]` dan `[skripsi]`
+- **Placeholder yang jelas** dengan format `{{PLACEHOLDER}}` dan komentar `TODO`
+- **3 cara kompilasi**: vimtex, Makefile, atau Docker
+- **CI/CD otomatis** dengan GitHub Actions
+- **Lorem ipsum** sebagai placeholder konten
+- **Bilingual**: Bahasa Indonesia + English abstract
 
 ---
 
 ## Repository Structure
 
 ```
-skripsi/                          # Git repo root
+ugm-thesis-latex/
+├── .github/
+│   ├── workflows/
+│   │   └── compile-latex.yml      # CI: Kompilasi otomatis
+│   ├── ISSUE_TEMPLATE/            # Template laporan issue
+│   └── PULL_REQUEST_TEMPLATE.md   # Template PR
 │
-├── AGENTS.md                     # Official UGM guide reference (READ THIS FIRST)
-├── README.md                     # This file
-├── .gitignore                    # Ignores LaTeX build artifacts
-├── LICENSE
-├── ugmskripsi.cls                # MASTER UGM class file
+├── docker/
+│   └── Dockerfile                 # Image LaTeX untuk Docker
 │
-├── proposal/                     # 📝 THESIS PROPOSAL (current work)
-│   ├── main.tex                  # Document: [proposal,indonesia]
-│   ├── ugmskripsi.cls            # Copy of master (for compatibility)
-│   ├── references.bib            # Bibliography
-│   ├── figures/
-│   │   └── logougm.pdf           # UGM logo
-│   └── chapters/
-│       ├── bab1-pendahuluan.tex
-│       ├── bab2-penelitian-terkait.tex
-│       ├── bab3-metodologi.tex
-│       └── bab4-jadwal-penelitian.tex
+├── template/                      # Template utama (fork ini!)
+│   ├── proposal/
+│   │   ├── main.tex               # Metadata + struktur proposal
+│   │   ├── ugmskripsi.cls         # Class file UGM
+│   │   ├── chapters/              # 4 BAB
+│   │   ├── figures/
+│   │   │   └── logougm.pdf        # Ganti dengan logo UGM resmi
+│   │   └── references.bib         # Database referensi
+│   │
+│   └── skripsi/
+│       ├── main.tex               # Metadata + struktur skripsi
+│       ├── ugmskripsi.cls
+│       ├── chapters/              # 6 BAB (Inovasi Produk)
+│       ├── figures/
+│       ├── lampiran/              # Lampiran
+│       └── references.bib
 │
-└── skripsi/                      # 📚 FULL THESIS (future work)
-    ├── main.tex                  # Document: [skripsi,indonesia]
-    ├── ugmskripsi.cls            # Copy of master
-    ├── references.bib            # Bibliography
-    ├── figures/
-    │   └── logougm.pdf           # UGM logo
-    ├── chapters/
-    │   ├── bab1-pendahuluan.tex
-    │   ├── bab2-identifikasi-masalah.tex
-    │   ├── bab3-kajian-ilmiah.tex
-    │   ├── bab4-perancangan.tex
-    │   ├── bab5-pembuatan.tex
-    │   └── bab6-pengujian.tex
-    └── lampiran/
-        └── lampiran-a.tex
+├── Makefile                       # Build automation
+├── CONTRIBUTING.md                # Panduan kontribusi
+├── AGENTS.md                      # Referensi pedoman UGM
+├── README.md                      # File ini
+└── examples/                      # Dokumen resmi UGM
+    ├── pedoman_ta.pdf
+    ├── contoh_proposal.pdf
+    └── contoh_skripsi.pdf
 ```
 
 ---
 
-## How to Compile
+## Cara Kompilasi
 
 ### Prerequisites
 
-Install a LaTeX distribution:
-- **macOS:** [MacTeX](https://tug.org/mactex/) (`brew install --cask mactex`)
-- **Windows:** [MiKTeX](https://miktex.org/) or [TeX Live](https://tug.org/texlive/)
-- **Linux:** `sudo apt-get install texlive-full`
+**Opsi A: Local (texlive terinstall)**
+- macOS: `brew install --cask mactex`
+- Windows: [MiKTeX](https://miktex.org/) atau [TeX Live](https://tug.org/texlive/)
+- Linux: `sudo apt-get install texlive-full`
 
-### Option 1: Local Compilation
+**Opsi B: Docker (tanpa texlive)**
+- [Docker Desktop](https://www.docker.com/products/docker-desktop)
+
+### Makefile Commands
 
 ```bash
-# Navigate to proposal or skripsi directory
-cd proposal/        # or cd skripsi/
+# Lokal (membutuhkan texlive)
+make proposal          # Kompilasi proposal
+make skripsi           # Kompilasi skripsi
+make clean             # Bersihkan file bantu
+make all               # Kompilasi keduanya
 
-# Full compile (with bibliography)
-export PATH="/Library/TeX/texbin:$PATH"
-pdflatex main.tex && bibtex main && pdflatex main.tex && pdflatex main.tex
-
-# Or use latexmk (auto-handles everything)
-latexmk -pdf main.tex
+# Docker (tidak perlu texlive)
+make proposal-docker   # Kompilasi proposal dalam container
+make skripsi-docker    # Kompilasi skripsi dalam container
+make all-docker        # Kompilasi keduanya dalam container
+make shell             # Shell interaktif dalam container
 ```
 
-### Option 2: Overleaf (Cloud)
+### vimtex (Neovim/Vim)
 
-1. Go to [Overleaf](https://www.overleaf.com/)
-2. Create new project → Upload Project
-3. Upload **either** `proposal/` or `skripsi/` folder as a zip
-4. Overleaf auto-compiles on save
+Jika menggunakan Neovim dengan [vimtex](https://github.com/lervag/vimtex):
 
-> **Note:** Each folder (`proposal/` and `skripsi/`) is self-contained with its own copy of `ugmskripsi.cls`.
-
----
-
-## Key Differences: Proposal vs Skripsi
-
-| Feature | Proposal | Skripsi |
-|---------|----------|---------|
-| Document class | `[proposal,indonesia]` | `[skripsi,indonesia]` |
-| Cover | "PROPOSAL TUGAS AKHIR" | "SKRIPSI" |
-| Approval page | ✅ | ✅ |
-| Declaration | ❌ | ✅ |
-| Motto / Persembahan | ❌ | ✅ |
-| Preface | ❌ | ✅ |
-| Daftar Isi | ✅ | ✅ |
-| Daftar Tabel / Gambar | ❌ | ✅ |
-| Daftar Simbol | ❌ | ✅ |
-| Intisari | ✅ (ID only) | ✅ (ID) |
-| Abstract | ✅ (EN) | ✅ (EN) |
-| Bab 1 | Rumusan **Masalah** | **Perumusan Produk** |
-| Bab 2 | Penelitian Terkait | Identifikasi Masalah dan Ide Inovatif |
-| Bab 3 | Metode dan Rancangan | Kajian Ilmiah |
-| Bab 4 | Jadwal Penelitian | Perancangan Prototipe/Produk |
-| Bab 5 | ❌ | Proses Pembuatan Produk |
-| Bab 6 | ❌ | Pengujian dan Evaluasi Produk |
-| Glosarium | ⚠️ Optional | ❌ |
-| Lampiran | ❌ | ✅ |
+```vim
+:VimtexCompile    " Mulai live preview
+:VimtexView       " Buka PDF viewer
+:VimtexStop       " Hentikan kompilasi
+```
 
 ---
 
-## Before You Compile
+## Versi Template
 
-1. **Fill in your metadata** in `main.tex`:
-   ```latex
-   \fullname{Your Full Name}
-   \idnum{Your Student ID}
-   \firstsupervisor{Your Advisor}
-   % ... etc
-   ```
+Gunakan tag untuk mengambil versi sesuai tahun akademik:
 
-2. **Replace `figures/logougm.pdf`** with the official UGM logo
+```bash
+# Clone versi spesifik
+git clone --branch v2026.1 https://github.com/vityasyyy/ugm-thesis-latex.git
 
-3. **Add references** to `references.bib` and cite them with `\citep{key}`
+# Atau checkout setelah clone
+git checkout v2026.1
+```
+
+| Versi | Tahun Akademik | Catatan |
+|-------|---------------|---------|
+| v2025.1 | 2024/2025 | Rilis awal |
 
 ---
 
 ## Troubleshooting
 
-| Problem | Solution |
-|---------|----------|
-| `logougm` not found | Add `figures/logougm.pdf` |
-| References show `[?]` | Run `bibtex main` then `pdflatex main.tex` twice |
-| PDF not updating | Delete `.aux` files and recompile |
+| Masalah | Solusi |
+|---------|--------|
+| `logougm` not found | Ganti `template/*/figures/logougm.pdf` dengan logo UGM resmi |
+| References `[?]` | Jalankan `bibtex main` lalu `pdflatex main.tex` 2x |
+| `natbib` error | Pastikan texlive-full atau package `natbib` terinstall |
+| PDF tidak update | Jalankan `make clean` lalu kompilasi ulang |
+| Docker tidak jalan | Pastikan Docker Desktop berjalan |
+
+---
+
+## Contributing
+
+Ingin berkontribusi? Lihat [CONTRIBUTING.md](CONTRIBUTING.md) untuk panduan lengkap.
+
+**Cara cepat berkontribusi:**
+1. Fork repository
+2. Buat branch: `git checkout -b fitur-anda`
+3. Commit perubahan
+4. Push dan buat Pull Request
+
+---
+
+## License
+
+[MIT License](LICENSE)
+
+> **Catatan:** Logo UGM dan dokumen pedoman adalah hak milik Universitas Gadjah Mada. Template ini hanya menyediakan struktur LaTeX dan tidak berafiliasi resmi dengan UGM.
 
 ---
 
 ## Resources
 
-- **Official Guide:** `examples/pedoman_ta.pdf`
-- **Example Proposal:** `examples/contoh_proposal.pdf`
-- **Example Skripsi:** `examples/contoh_skripsi.pdf`
-- **Case Study:** [`invenio-rdm-gitops`](https://github.com/vityasyyy/invenio-rdm-gitops)
+- **Pedoman Resmi:** `examples/pedoman_ta.pdf`
+- **Contoh Proposal:** `examples/contoh_proposal.pdf`
+- **Contoh Skripsi:** `examples/contoh_skripsi.pdf`
+- **AGENTS.md:** Referensi cepat struktur dan aturan UGM
 
 ---
 
-Happy writing! 🎓
+Selamat menulis! 🎓
