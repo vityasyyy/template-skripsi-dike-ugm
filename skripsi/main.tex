@@ -1,0 +1,127 @@
+\documentclass[skripsi,indonesia]{ugmskripsi}
+% Options:
+%   skripsi / proposal        (default: skripsi)
+%   satuspasi / duaspasi / satusetengahspasi (default: satusetengahspasi)
+%   indonesia / inggris       (default: indonesia)
+
+%------------------------------------------------------------
+% Metadata Skripsi
+%------------------------------------------------------------
+\titleind{Implementasi GitOps untuk Deployment Aplikasi pada Klaster Kubernetes: Studi Kasus InvenioRDM}
+\titleeng{Implementation of GitOps for Application Deployment on Kubernetes Cluster: InvenioRDM Case Study}
+\fullname{Argya Vityasy}
+\idnum{23/522547/PA/22475}
+\degree{Sarjana Komputer}
+\gelar{S.Kom.}
+\yearsubmit{2026}
+\program{Informatika}
+\dept{Teknik Elektro dan Informatika}
+\firstsupervisor{Nama Dosen Pembimbing, S.T., M.T.}
+\firstexaminer{Nama Dosen Penguji I, S.T., M.T.}
+\secondexaminer{Nama Dosen Penguji II, S.T., M.T.}
+
+%------------------------------------------------------------
+% Packages
+%------------------------------------------------------------
+\usepackage[utf8]{inputenc}
+\usepackage{graphicx}
+\graphicspath{{figures/}}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{booktabs}
+\usepackage{longtable}
+\usepackage{tabularx}
+\usepackage{multirow}
+\usepackage{float}
+\usepackage{listings}
+\usepackage{xcolor}
+\usepackage{hyperref}
+\usepackage{url}
+\usepackage{enumitem}
+
+% Code listing style
+\lstset{
+    basicstyle=\ttfamily\small,
+    breaklines=true,
+    frame=single,
+    numbers=left,
+    numberstyle=\tiny,
+    keywordstyle=\color{blue},
+    commentstyle=\color{gray},
+    stringstyle=\color{orange},
+    showstringspaces=false,
+    tabsize=2
+}
+
+% Define YAML language for listings
+\lstdefinelanguage{yaml}{
+  keywords={true,false,null,y,n},
+  sensitive=false,
+  comment=[l]{\#},
+  morecomment=[s]{/*}{*/},
+  morestring=[b]',
+  morestring=[b]"
+}
+
+% Define Docker language for listings
+\lstdefinelanguage{docker}{
+  alsoletter={-},
+  keywords={FROM,RUN,CMD,LABEL,MAINTAINER,EXPOSE,ENV,ADD,COPY,ENTRYPOINT,VOLUME,USER,WORKDIR,ARG,ONBUILD,STOPSIGNAL,HEALTHCHECK,SHELL},
+  sensitive=false,
+  comment=[l]{\#},
+  morestring=[b]',
+  morestring=[b]"
+}
+
+%------------------------------------------------------------
+% Document Body
+%------------------------------------------------------------
+\begin{document}
+
+% Preliminary Pages (Skripsi: lengkap)
+\cover
+\titlepageind
+\approvalpage
+\declarepage
+\motto
+\acknowledment
+
+\preface
+\addcontentsline{toc}{chapter}{\prefacename}
+Isi Prakata di sini...
+
+\tableofcontents
+\listoftables
+\listoffigures
+% \lambang  % Uncomment when you have nomenclature entries defined
+
+\abstractind
+Isi Intisari (Bahasa Indonesia) di sini. Abstract ini merangkum penelitian mengenai implementasi GitOps untuk deployment aplikasi pada klaster Kubernetes dengan studi kasus InvenioRDM.
+\endabstractind
+
+\abstracteng
+This abstract summarizes the research on implementing GitOps for application deployment on a Kubernetes cluster with an InvenioRDM case study.
+\endabstracteng
+
+%------------------------------------------------------------
+% Chapters
+%------------------------------------------------------------
+\include{chapters/bab1-pendahuluan}
+\include{chapters/bab2-identifikasi-masalah}
+\include{chapters/bab3-kajian-ilmiah}
+\include{chapters/bab4-perancangan}
+\include{chapters/bab5-pembuatan}
+\include{chapters/bab6-pengujian}
+
+%------------------------------------------------------------
+% Bibliography
+%------------------------------------------------------------
+\bibliography{references}
+
+%------------------------------------------------------------
+% Appendices
+%------------------------------------------------------------
+\appendix
+\include{lampiran/lampiran-a}
+
+\end{document}

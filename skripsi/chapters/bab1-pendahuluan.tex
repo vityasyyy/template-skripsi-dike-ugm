@@ -1,0 +1,50 @@
+\chapter{PENDAHULUAN}
+
+\section{Latar Belakang}
+
+Dalam era digital yang semakin berkembang, pengelolaan infrastruktur IT mengalami transformasi signifikan menuju pendekatan yang lebih otomatis dan terstruktur. \textit{Kubernetes} telah menjadi standar \textit{de facto} untuk orkestrasi kontainer, memungkinkan organisasi untuk men-deploy, mengelola, dan menskalakan aplikasi dengan efisien. Namun, kompleksitas pengelolaan klaster Kubernetes mendorong lahirnya praktik \textit{GitOps} yang mengubah cara tim operasional dan pengembangan berkolaborasi \citep{weaveworks-gitops}.
+
+GitOps adalah paradigma operasional yang menggunakan repositori Git sebagai sumber kebenaran tunggal untuk infrastruktur dan aplikasi. Dengan GitOps, setiap perubahan pada sistem dilakukan melalui \textit{pull request}, memberikan audit trail lengkap, kemudahan rollback, dan kolaborasi yang lebih baik \citep{gitops-principles}.
+
+Penelitian ini berfokus pada implementasi GitOps untuk deployment aplikasi \textit{InvenioRDM} --- platform manajemen data riset \textit{open-source} --- pada klaster Kubernetes yang dikelola oleh Rancher. Studi kasus ini mencakup penggunaan ArgoCD sebagai \textit{GitOps controller}, Sealed Secrets untuk manajemen rahasia, dan Cloudflare Tunnel untuk akses eksternal yang aman.
+
+\section{Perumusan Produk}
+
+Berdasarkan latar belakang di atas, produk yang akan dikembangkan dalam penelitian ini adalah sistem GitOps untuk deployment otomatis aplikasi InvenioRDM pada klaster Kubernetes dengan fitur-fitur berikut:
+
+\begin{enumerate}
+  \item Arsitektur GitOps berbasis ArgoCD dengan sync wave untuk mengelola dependensi antar komponen infrastruktur.
+  \item Manajemen rahasia terenkripsi menggunakan Sealed Secrets yang aman untuk disimpan di repositori Git.
+  \item Akses eksternal yang aman melalui Cloudflare Tunnel dengan pendekatan outbound-only.
+  \item NetworkPolicies dengan konfigurasi default-deny untuk isolasi jaringan antar namespace.
+\end{enumerate}
+
+\section{Batasan Produk}
+
+Agar pengembangan produk tetap fokus dan terukur, batasan produk yang ditetapkan adalah:
+
+\begin{enumerate}
+  \item Klaster Kubernetes yang digunakan dikelola oleh Rancher.
+  \item \textit{GitOps controller} yang digunakan adalah ArgoCD.
+  \item Aplikasi yang di-deploy adalah InvenioRDM dengan dependensinya (PostgreSQL, Redis, OpenSearch, MinIO).
+  \item Evaluasi fokus pada aspek deployment, keamanan jaringan, dan manajemen rahasia.
+\end{enumerate}
+
+\section{Tujuan Penelitian}
+
+Tujuan dari penelitian ini adalah:
+
+\begin{enumerate}
+  \item Merancang arsitektur GitOps untuk deployment aplikasi pada klaster Kubernetes.
+  \item Mengimplementasikan GitOps menggunakan ArgoCD untuk deployment otomatis aplikasi InvenioRDM.
+  \item Mengevaluasi efektivitas dan keamanan dari implementasi GitOps yang dibangun.
+\end{enumerate}
+
+\section{Manfaat Penelitian}
+
+Penelitian ini diharapkan memberikan manfaat berikut:
+
+\begin{enumerate}
+  \item \textbf{Teoritis:} Menambah khazanah keilmuan mengenai implementasi GitOps pada Kubernetes, khususnya dalam konteks deployment aplikasi berbasis kontainer.
+  \item \textbf{Praktis:} Memberikan panduan teknis dan \textit{blueprint} untuk implementasi GitOps pada klaster Kubernetes yang dapat diadopsi oleh organisasi atau peneliti lain.
+\end{enumerate}
