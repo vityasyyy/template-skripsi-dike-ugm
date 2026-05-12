@@ -1,0 +1,82 @@
+name: Compile LaTeX
+
+on:
+  push:
+    branches: [ main, master ]
+    paths:
+      - 'template/**/*.tex'
+      - 'template/**/*.bib'
+      - 'template/**/*.cls'
+      - 'docker/Dockerfile'
+      - '.github/workflows/compile-latex.yml'
+  pull_request:
+    branches: [ main, master ]
+    paths:
+      - 'template/**/*.tex'
+      - 'template/**/*.bib'
+      - 'template/**/*.cls'
+      - 'docker/Dockerfile'
+      - '.github/workflows/compile-latex.yml'
+  workflow_dispatch:
+
+jobs:
+  compile-proposal:
+    runs-on: ubuntu-latest
+    name: Compile Proposal
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Compile proposal with Docker
+        run: make proposal-docker
+
+      - name: Upload proposal PDF
+        uses: actions/upload-artifact@v4
+        with:
+          name: proposal-pdf
+          path: template/proposal/main.pdf
+          retention-days: 90
+
+  compile-skripsi:
+    runs-on: ubuntu-latest
+    name: Compile Skripsi
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Compile skripsi with Docker
+        run: make skripsi-docker
+
+      - name: Upload skripsi PDF
+        uses: actions/upload-artifact@v4
+        with:
+          name: skripsi-pdf
+          path: template/skripsi/main.pdf
+          retention-days: 90
+
+  release:
+    runs-on: ubuntu-latest
+    name: Attach PDFs to Release
+    needs: [compile-proposal, compile-skripsi]
+    if: startsWith(github.ref, 'refs/tags/v')
+    steps:
+      - name: Download proposal PDF
+        uses: actions/download-artifact@v4
+        with:
+          name: proposal-pdf
+          path: ./pdfs/proposal
+
+      - name: Download skripsi PDF
+        uses: actions/download-artifact@v4
+        with:
+          name: skripsi-pdf
+          path: ./pdfs/skripsi
+
+      - name: Attach PDFs to release
+        uses: softprops/action-gh-release@v1
+        with:
+          files: |
+            ./pdfs/proposal/main.pdf
+            ./pdfs/skripsi/main.pdf
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
