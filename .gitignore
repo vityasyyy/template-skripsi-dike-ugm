@@ -1,0 +1,34 @@
+# LaTeX Build Artifacts (any depth)
+**/*.aux
+**/*.log
+**/*.out
+**/*.toc
+**/*.lof
+**/*.lot
+**/*.fls
+**/*.fdb_latexmk
+**/*.synctex.gz
+**/*.bbl
+**/*.blg
+**/*.glo
+**/*.idx
+**/*.ind
+**/*.ilg
+**/*.ist
+**/*.loa
+
+# Generated PDFs (uncomment to ignore)
+# **/*.pdf
+
+# OS & Editor files
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Secrets
+.env
+secrets/
